@@ -1,17 +1,14 @@
 package com.example.admin.myapplication;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.os.Vibrator;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.SeekBar;
-import android.widget.TextView;
 
 public class BrowserActivity extends AppCompatActivity {
 
@@ -22,17 +19,35 @@ public class BrowserActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_browser);
+
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         button = findViewById(R.id.buttonGo);
         editText = findViewById(R.id.editText);
         webView = findViewById(R.id.webView);
+        webView.getSettings().setJavaScriptEnabled(true);
+
+        webView.setWebViewClient(new WebViewClient() {
+
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                return super.shouldOverrideUrlLoading(view, url);
+            }
+
+
+            @SuppressWarnings("deprecation")
+            @Override
+            public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+
+            }
+        });
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                webView.loadUrl("http://" + editText.getText().toString());
             }
         });
     }
