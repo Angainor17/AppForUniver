@@ -29,20 +29,7 @@ public class BrowserActivity extends AppCompatActivity {
         webView = findViewById(R.id.webView);
         webView.getSettings().setJavaScriptEnabled(true);
 
-        webView.setWebViewClient(new WebViewClient() {
-
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                return super.shouldOverrideUrlLoading(view, url);
-            }
-
-
-            @SuppressWarnings("deprecation")
-            @Override
-            public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
-
-            }
-        });
+        webView.setWebViewClient(new WebViewClient());
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override

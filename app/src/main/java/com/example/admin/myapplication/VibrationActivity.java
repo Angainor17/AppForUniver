@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-public class VibroActivity extends AppCompatActivity {
+public class VibrationActivity extends AppCompatActivity {
 
     Button button;
     SeekBar seekBar;

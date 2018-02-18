@@ -19,6 +19,7 @@ public class TorchActivity extends AppCompatActivity {
     Camera.Parameters parameters;
 
     CameraManager cameraManager;
+    Thread thread;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -40,16 +41,17 @@ public class TorchActivity extends AppCompatActivity {
 
 
         cameraManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
-        switchView.setChecked(false);
         switchView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 if (isChecked) {
-                    parameters.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
-                    //sleep
-                    parameters.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
-                    //sleep
-                    Thread runnable = new Thread(new Runnable() {
+//                    parameters.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
+//                    //sleep
+//                    parameters.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
+//                    //sleep
+//
+
+                    thread = new Thread(new Runnable() {
                         @Override
                         public void run() {
                             for (int i = 0; i < 10; i++) {
@@ -63,7 +65,7 @@ public class TorchActivity extends AppCompatActivity {
                             }
                         }
                     });
-                    runnable.start();
+                    thread.start();
 
 
                 } else {

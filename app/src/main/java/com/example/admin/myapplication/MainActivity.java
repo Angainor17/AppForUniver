@@ -22,11 +22,10 @@ public class MainActivity extends AppCompatActivity {
         buttonVibration.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), VibroActivity.class);
+                Intent intent = new Intent(getApplicationContext(), VibrationActivity.class);
                 startActivity(intent);
             }
         });
-
 
         buttonBrowser = findViewById(R.id.buttonBrowser);
         buttonBrowser.setOnClickListener(new View.OnClickListener() {
