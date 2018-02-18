@@ -30,45 +30,22 @@ public class TorchActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-//        thread = new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                for (int i = 0; i < 10; i++) {
-//                    parameters.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
-//                    try {
-//                        Thread.sleep(1000);
-//                    } catch (InterruptedException e) {
-//                        e.printStackTrace();
-//                    }
-//                    parameters.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
-//                    TorchActivity.this.runOnUiThread(new Runnable() {
-//                        @Override
-//                        public void run() {
-//
-//                        }
-//                    });
-//                    camera.setParameters(parameters);
-//                    camera.startPreview();
-//                }
-//            }
-//        });
-
         switchView = findViewById(R.id.switch1);
 
-        camera = Camera.open();
-        parameters = camera.getParameters();
+        camera = Camera.open();//получаем ресурс камеры
+        parameters = camera.getParameters();//ссылка на парметры камеры
 
         cameraManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
         switchView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 if (isChecked) {
-                    parameters.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
+                    parameters.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);//ВКЛ
                 } else {
-                    parameters.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
+                    parameters.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);//ВЫКЛ
                 }
-                camera.setParameters(parameters);
-                camera.startPreview();
+                camera.setParameters(parameters);//задаём параметры камеры
+                camera.startPreview();//запуск работы камеры(в данном случае у нас работает только вспышка)
             }
         });
     }
@@ -77,8 +54,8 @@ public class TorchActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         if (camera != null) {
-            camera.stopPreview();
-            camera.release();
+            camera.stopPreview();//останавливаем работу с камерой
+            camera.release();//освобождаем ресурс, а то иначе ни система в будущем, ни мы не сможем снова без ошибки её запросить
         }
     }
 

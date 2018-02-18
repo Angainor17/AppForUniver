@@ -17,12 +17,12 @@ public class VibrationActivity extends AppCompatActivity {
     SeekBar seekBar;
     TextView textView;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        ActionBar actionBar = getSupportActionBar();//верхняя панелька
+        actionBar.setTitle("Вибрация");//название на верхней панельке
+        actionBar.setDisplayHomeAsUpEnabled(true); //отображение кнопки назад на верхней панельке
 
         setContentView(R.layout.activity_vibro);
         button = findViewById(R.id.button);
@@ -56,7 +56,7 @@ public class VibrationActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
+        if (item.getItemId() == android.R.id.home) {//распознаёт нажатие на иконку назад в actionBar и вызывает обработчик нажатия кнопки назад
             super.onBackPressed();
         }
         return super.onOptionsItemSelected(item);
@@ -64,7 +64,7 @@ public class VibrationActivity extends AppCompatActivity {
 
 
     private void vibrate(int milliSec) {
-        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);//получаем системный сервис
         v.vibrate(milliSec);
     }
 }

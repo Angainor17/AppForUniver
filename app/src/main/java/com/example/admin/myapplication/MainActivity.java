@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+
 public class MainActivity extends AppCompatActivity {
 
     Button buttonVibration;
@@ -15,13 +16,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main);// привязка Актвити и Layout XML файла
 
-        buttonVibration = findViewById(R.id.buttonVibro);
+        buttonVibration = findViewById(R.id.buttonVibro); // поиск по заданому XML файлу вьюшки
+
         buttonVibration.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), VibrationActivity.class);
+                Intent intent = new Intent(getApplicationContext(), VibrationActivity.class);//intent что-то вроде описания события, в данном случае запуск Activity
                 startActivity(intent);
             }
         });

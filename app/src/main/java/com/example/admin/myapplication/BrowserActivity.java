@@ -27,7 +27,6 @@ public class BrowserActivity extends AppCompatActivity {
         button = findViewById(R.id.buttonGo);
         editText = findViewById(R.id.editText);
         webView = findViewById(R.id.webView);
-//        webView.getSettings().setJavaScriptEnabled(true);
 
         webView.setWebViewClient(new WebViewClient());
 
