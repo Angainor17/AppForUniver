@@ -22,14 +22,6 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".VibrationActivity"
-                  android:windowSoftInputMode="adjustResize|stateUnspecified"
-        />
-        <activity android:name=".BrowserActivity"
-                  android:windowSoftInputMode="adjustResize|stateUnspecified"
-        />
-        <activity android:name=".ViewsActivity"/>
-        <activity android:name=".TorchActivity"/>
     </application>
 
 </manifest>
