@@ -10,7 +10,6 @@ public class MainActivity extends AppCompatActivity {
 
     Button buttonVibration;
     Button buttonBrowser;
-    Button buttonExample;
     Button buttonTorch;
 
     @Override
@@ -32,15 +31,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), BrowserActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        buttonExample = findViewById(R.id.buttonExample);
-        buttonExample.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), ViewsActivity.class);
                 startActivity(intent);
             }
         });

@@ -19,7 +19,7 @@ public class TorchActivity extends AppCompatActivity {
     Camera.Parameters parameters;
 
     CameraManager cameraManager;
-    Thread thread;
+//    Thread thread;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -30,52 +30,45 @@ public class TorchActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
+//        thread = new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                for (int i = 0; i < 10; i++) {
+//                    parameters.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
+//                    try {
+//                        Thread.sleep(1000);
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+//                    parameters.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
+//                    TorchActivity.this.runOnUiThread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//
+//                        }
+//                    });
+//                    camera.setParameters(parameters);
+//                    camera.startPreview();
+//                }
+//            }
+//        });
 
         switchView = findViewById(R.id.switch1);
-        try {
-            camera = Camera.open();
-            parameters = camera.getParameters();
-        } catch (Exception e) {
 
-        }
-
+        camera = Camera.open();
+        parameters = camera.getParameters();
 
         cameraManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
         switchView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 if (isChecked) {
-//                    parameters.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
-//                    //sleep
-//                    parameters.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
-//                    //sleep
-//
-
-                    thread = new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            for (int i = 0; i < 10; i++) {
-                                parameters.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
-                                try {
-                                    Thread.sleep(1000);
-                                } catch (InterruptedException e) {
-                                    e.printStackTrace();
-                                }
-                                parameters.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
-                            }
-                        }
-                    });
-                    thread.start();
-
-
+                    parameters.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
                 } else {
                     parameters.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
-                    // TODO: 14.02.2018 kill runnable
                 }
-                if (camera != null) {
-                    camera.setParameters(parameters);
-                    camera.startPreview();
-                }
+                camera.setParameters(parameters);
+                camera.startPreview();
             }
         });
     }

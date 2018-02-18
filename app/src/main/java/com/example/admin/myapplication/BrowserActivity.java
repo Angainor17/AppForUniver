@@ -27,14 +27,14 @@ public class BrowserActivity extends AppCompatActivity {
         button = findViewById(R.id.buttonGo);
         editText = findViewById(R.id.editText);
         webView = findViewById(R.id.webView);
-        webView.getSettings().setJavaScriptEnabled(true);
+//        webView.getSettings().setJavaScriptEnabled(true);
 
         webView.setWebViewClient(new WebViewClient());
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                webView.loadUrl("http://" + editText.getText().toString());
+                webView.loadUrl("http://" + editText.getText());
             }
         });
     }
